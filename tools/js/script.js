@@ -107,14 +107,14 @@ const secure_token = () => {
 
 // ----------------------------------------------------------------------------
 // One Line
-const convertToOneLine = (text) => {
+const convertToSingleLine = (text) => {
   let singleLineText = text.replace(/\s+/g, '');
   return singleLineText;
 }
 
-const one_line = () => {
+const single_line = () => {
   const message = document.getElementById('message').value
-  const oneLine = convertToOneLine(message)
+  const oneLine = convertToSingleLine(message)
   $result(oneLine)
 }
 // ----------------------------------------------------------------------------
