@@ -104,3 +104,17 @@ const secure_token = () => {
   $result(result)
 }
 // ----------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------
+// One Line
+const convertToOneLine = (text) => {
+  let singleLineText = text.replace(/\s+/g, '');
+  return singleLineText;
+}
+
+const one_line = () => {
+  const message = document.getElementById('message').value
+  const oneLine = convertToOneLine(message)
+  $result(oneLine)
+}
+// ----------------------------------------------------------------------------
