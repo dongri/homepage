@@ -1,3 +1,8 @@
+boyd {
+  font-family: monospace;
+  padding: 30px;
+}
+
 div {
   display: flex;
   flex-direction: column;
