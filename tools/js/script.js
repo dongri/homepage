@@ -106,7 +106,7 @@ const secure_token = () => {
 // ----------------------------------------------------------------------------
 
 // ----------------------------------------------------------------------------
-// One Line
+// Single Line
 const convertToSingleLine = (text) => {
   let singleLineText = text.replace(/\s+/g, '');
   return singleLineText;
