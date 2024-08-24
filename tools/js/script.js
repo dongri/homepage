@@ -1,5 +1,5 @@
 const $result = (text) => {
-  document.getElementById('result').innerHTML = text
+  document.getElementById('result').value = text
 }
 
 // ----------------------------------------------------------------------------
