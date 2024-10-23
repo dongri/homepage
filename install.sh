@@ -1,6 +1,13 @@
 #!/bin/bash
 set -e
 
+show_apps() {
+  echo "Mac Apps"
+  echo ""
+  echo "⌘英かな: https://ei-kana.appspot.com"
+  echo ""
+}
+
 show_main_menu() {
   echo "Please choose a programming language to install:"
   echo "1) Rust"
@@ -54,6 +61,8 @@ install_node() {
   echo "$ node --version"
   echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 }
+
+show_apps
 
 # Main loop
 while true; do
