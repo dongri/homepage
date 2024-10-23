@@ -6,8 +6,9 @@ echo "2) Rust"
 echo "3) Node.js"
 echo "4) Ruby"
 echo "5) Python"
+echo -n "番号を選択してください (1-5): "
 
-read -p "番号を選択してください (1-5): " choice
+read choice
 
 case $choice in
   1)
