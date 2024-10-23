@@ -11,18 +11,6 @@ command_exists() {
     command -v "$1" >/dev/null 2>&1
 }
 
-# Function to print instructions
-print_instructions() {
-    local lang=$1
-    echo -e "\n${GREEN}=== $lang Installation Instructions ===${NC}"
-    if command_exists $2; then
-        echo -e "${GREEN}$lang is already installed!${NC}"
-        $2 --version
-    else
-        get_os_specific_instructions $3
-    fi
-}
-
 # Installation instructions based on OS
 get_os_specific_instructions() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
@@ -69,57 +57,76 @@ get_os_specific_instructions() {
     fi
 }
 
-# Function to show menu and get choice
+# Main menu function
 show_menu() {
+    PS3="Enter your choice (1-5): "
+    options=("Go" "Rust" "Node.js" "Ruby" "Python")
+    
     printf "${BLUE}=== Development Environment Installation Script ===${NC}\n\n"
-    printf "Please select a programming language to install:\n"
-    printf "1) Go\n"
-    printf "2) Rust\n"
-    printf "3) Node.js\n"
-    printf "4) Ruby\n"
-    printf "5) Python\n"
-    printf "Enter your choice (1-5): "
+    printf "Please select a programming language to install:\n\n"
+    
+    select opt in "${options[@]}"; do
+        case $opt in
+            "Go")
+                if command_exists go; then
+                    echo -e "\n${GREEN}Go is already installed!${NC}"
+                    go version
+                else
+                    get_os_specific_instructions "go"
+                fi
+                break
+                ;;
+            "Rust")
+                if command_exists rustc; then
+                    echo -e "\n${GREEN}Rust is already installed!${NC}"
+                    rustc --version
+                else
+                    get_os_specific_instructions "rust"
+                fi
+                break
+                ;;
+            "Node.js")
+                if command_exists node; then
+                    echo -e "\n${GREEN}Node.js is already installed!${NC}"
+                    node --version
+                else
+                    get_os_specific_instructions "node"
+                fi
+                break
+                ;;
+            "Ruby")
+                if command_exists ruby; then
+                    echo -e "\n${GREEN}Ruby is already installed!${NC}"
+                    ruby --version
+                else
+                    get_os_specific_instructions "ruby"
+                fi
+                break
+                ;;
+            "Python")
+                if command_exists python3; then
+                    echo -e "\n${GREEN}Python is already installed!${NC}"
+                    python3 --version
+                else
+                    get_os_specific_instructions "python"
+                fi
+                break
+                ;;
+            *) 
+                echo -e "${RED}Invalid option. Please select a number between 1 and 5.${NC}"
+                ;;
+        esac
+    done
 }
 
-# Show the menu
-show_menu
-
-# Read input with timeout
-if [ -t 0 ]; then
-    # Interactive mode
-    read choice
-else
-    # Non-interactive mode (pipe)
-    read -t 1 choice
-    if [ $? -ne 0 ]; then
-        # If no input received, show menu again and wait for input
-        show_menu
-        read choice
-    fi
+# Ensure we're running interactively
+if [ ! -t 0 ]; then
+    # If we're not in a terminal, rerun the script in a new terminal
+    exec </dev/tty
 fi
 
-# Process user choice
-case $choice in
-    1)
-        print_instructions "Go" "go" "go"
-        ;;
-    2)
-        print_instructions "Rust" "rustc" "rust"
-        ;;
-    3)
-        print_instructions "Node.js" "node" "node"
-        ;;
-    4)
-        print_instructions "Ruby" "ruby" "ruby"
-        ;;
-    5)
-        print_instructions "Python" "python3" "python"
-        ;;
-    *)
-        echo -e "\n${RED}Invalid choice. Please run the script again and select a number between 1-5.${NC}"
-        exit 1
-        ;;
-esac
+# Show the menu and get user input
+show_menu
 
 echo -e "\n${BLUE}=== Post Installation ===${NC}"
 echo "After running the installation command, you may need to restart your terminal."
