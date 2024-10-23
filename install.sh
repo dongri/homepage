@@ -6,24 +6,21 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-# Print header
-echo -e "${BLUE}=== Development Environment Installation Script ===${NC}\n"
-
-# Print available options
-echo "Please select a programming language to install:"
-echo "1) Go"
-echo "2) Rust"
-echo "3) Node.js"
-echo "4) Ruby"
-echo "5) Python"
-echo -n "Enter your choice (1-5): "
-
-# Read user input
-read choice
-
 # Function to check if command exists
 command_exists() {
     command -v "$1" >/dev/null 2>&1
+}
+
+# Function to print instructions
+print_instructions() {
+    local lang=$1
+    echo -e "\n${GREEN}=== $lang Installation Instructions ===${NC}"
+    if command_exists $2; then
+        echo -e "${GREEN}$lang is already installed!${NC}"
+        $2 --version
+    else
+        get_os_specific_instructions $3
+    fi
 }
 
 # Installation instructions based on OS
@@ -72,55 +69,54 @@ get_os_specific_instructions() {
     fi
 }
 
+# Function to show menu and get choice
+show_menu() {
+    printf "${BLUE}=== Development Environment Installation Script ===${NC}\n\n"
+    printf "Please select a programming language to install:\n"
+    printf "1) Go\n"
+    printf "2) Rust\n"
+    printf "3) Node.js\n"
+    printf "4) Ruby\n"
+    printf "5) Python\n"
+    printf "Enter your choice (1-5): "
+}
+
+# Show the menu
+show_menu
+
+# Read input with timeout
+if [ -t 0 ]; then
+    # Interactive mode
+    read choice
+else
+    # Non-interactive mode (pipe)
+    read -t 1 choice
+    if [ $? -ne 0 ]; then
+        # If no input received, show menu again and wait for input
+        show_menu
+        read choice
+    fi
+fi
+
 # Process user choice
 case $choice in
     1)
-        echo -e "\n${GREEN}=== Go Installation Instructions ===${NC}"
-        if command_exists go; then
-            echo -e "${GREEN}Go is already installed!${NC}"
-            go version
-        else
-            get_os_specific_instructions "go"
-        fi
+        print_instructions "Go" "go" "go"
         ;;
     2)
-        echo -e "\n${GREEN}=== Rust Installation Instructions ===${NC}"
-        if command_exists rustc; then
-            echo -e "${GREEN}Rust is already installed!${NC}"
-            rustc --version
-        else
-            get_os_specific_instructions "rust"
-        fi
+        print_instructions "Rust" "rustc" "rust"
         ;;
     3)
-        echo -e "\n${GREEN}=== Node.js Installation Instructions ===${NC}"
-        if command_exists node; then
-            echo -e "${GREEN}Node.js is already installed!${NC}"
-            node --version
-        else
-            get_os_specific_instructions "node"
-        fi
+        print_instructions "Node.js" "node" "node"
         ;;
     4)
-        echo -e "\n${GREEN}=== Ruby Installation Instructions ===${NC}"
-        if command_exists ruby; then
-            echo -e "${GREEN}Ruby is already installed!${NC}"
-            ruby --version
-        else
-            get_os_specific_instructions "ruby"
-        fi
+        print_instructions "Ruby" "ruby" "ruby"
         ;;
     5)
-        echo -e "\n${GREEN}=== Python Installation Instructions ===${NC}"
-        if command_exists python3; then
-            echo -e "${GREEN}Python is already installed!${NC}"
-            python3 --version
-        else
-            get_os_specific_instructions "python"
-        fi
+        print_instructions "Python" "python3" "python"
         ;;
     *)
-        echo -e "\n${RED}Invalid choice. Please run the script again and select a number between 1 and 5.${NC}"
+        echo -e "\n${RED}Invalid choice. Please run the script again and select a number between 1-5.${NC}"
         exit 1
         ;;
 esac
