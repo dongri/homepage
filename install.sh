@@ -10,7 +10,7 @@ echo "5) Python"
 echo "Enter the number corresponding to your choice: "
 
 # Read user input
-read choice
+read choice < /dev/tty
 
 # Function to display installation steps for Go
 install_go() {
