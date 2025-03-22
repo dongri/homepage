@@ -2,61 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>404 - ASCII Mode</title>
+  <title>Security Breach</title>
   <style>
-    body {
+    html, body {
+      margin: 0;
+      padding: 0;
       background-color: black;
-      color: #33FF33;
-      font-family: "Courier New", Courier, monospace;
-      font-size: 14px;
-      white-space: pre;
-      padding: 40px;
+      color: white;
+      font-family: 'Arial Black', sans-serif;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      animation: redflash 0.5s infinite;
     }
-    #ascii {
-      max-width: 60ch;
-      margin: auto;
-      padding: 20px;
+
+    @keyframes redflash {
+      0%, 100% { background-color: black; }
+      50% { background-color: #8B0000; }
+    }
+
+    .warning {
+      text-align: center;
+      font-size: 2em;
+      animation: shake 0.2s infinite;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(2px, -2px); }
+      50% { transform: translate(-2px, 2px); }
+      75% { transform: translate(2px, 2px); }
+      100% { transform: translate(-2px, -2px); }
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      color: gray;
+      font-size: 0.8em;
+      font-family: monospace;
     }
   </style>
 </head>
 <body>
-  <div id="ascii">
-    <div id="output"></div>
+  <div class="warning">
+    ⚠️ SECURITY BREACH DETECTED ⚠️<br><br>
+    Your device has been compromised.<br>
+    IP Address: <span id="ip">192.168.0.66</span><br>
+    Webcam access... <span style="color: red;">[GRANTED]</span><br>
+    Uploading personal data... <span style="color: red;">87%</span><br><br>
+    <span style="color: #ff0000; font-size: 1.2em;">Do not close this window.</span>
+  </div>
+  <div class="footer">
+    This was just a 404 page. Or was it?
   </div>
 
   <script>
-    const text = `
- _______________________________________________________
-|                                                       |
-|   ERROR 404 - PAGE NOT FOUND                          |
-|_______________________________________________________|
-|                                                       |
-|   The page you're looking for doesn't exist.          |
-|   It might have been moved, deleted, or never there.  |
-|                                                       |
-|   > Press [H] to return to Homepage                   |
-|   > Press [B] to go Back                              |
-|_______________________________________________________|
-`;
-
-    let i = 0;
-    const out = document.getElementById("output");
-    function type() {
-      if (i < text.length) {
-        out.textContent += text.charAt(i);
-        i++;
-        setTimeout(type, 5);
-      }
-    }
-    type();
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key.toLowerCase() === "h") {
-        window.location.href = "/";
-      } else if (e.key.toLowerCase() === "b") {
-        window.history.back();
-      }
-    });
+    // Optionally update IP to random-ish value
+    const rand = () => Math.floor(Math.random() * 255);
+    document.getElementById("ip").textContent = `${rand()}.${rand()}.${rand()}.${rand()}`;
   </script>
 </body>
 </html>
