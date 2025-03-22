@@ -2,56 +2,64 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>404 - OVER 9000</title>
+  <title>404 - ASCII Mode</title>
   <style>
     body {
       background-color: black;
-      color: #00FF00;
+      color: #33FF33;
       font-family: "Courier New", Courier, monospace;
+      font-size: 14px;
       white-space: pre;
-      padding: 2em;
+      padding: 40px;
     }
-    #ascii-box {
-      border: 2px solid #00FF00;
-      padding: 1em;
+    #ascii {
       max-width: 80ch;
       margin: auto;
+      border: 1px solid #33FF33;
+      padding: 20px;
     }
   </style>
 </head>
 <body>
-  <div id="ascii-box">
-    <div id="text-output"></div>
+  <div id="ascii">
+    <div id="output"></div>
   </div>
 
   <script>
     const text = `
-╔══════════════════════════════════════════════════════╗
-║  404 ERROR - PAGE NOT FOUND                         ║
-║------------------------------------------------------║
-║  Power level scan in progress...                    ║
-║  [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] OVER 9000!!!           ║
-║                                                      ║
-║  "Kakarot! This page... it doesn’t exist!"           ║
-║                                                      ║
-║  The requested page vanished faster than Goku's      ║
-║  Instant Transmission. Not even the Dragon Balls     ║
-║  can bring it back.                                  ║
-║                                                      ║
-║  > Press [H] to return to Capsule Corp (Home)        ║
-║  > Or scream into the void like Vegeta...            ║
-╚══════════════════════════════════════════════════════╝
+ _______________________________________________________
+|                                                       |
+|   ERROR 404 - PAGE NOT FOUND                          |
+|_______________________________________________________|
+|                                                       |
+|   The page you're looking for doesn't exist.          |
+|   It might have been moved, deleted, or never there.  |
+|                                                       |
+|   > Press [H] to return to Homepage                   |
+|   > Press [B] to go Back                              |
+|                                                       |
+|   Terminal v1.04 // ascii-mode                        |
+|_______________________________________________________|
 `;
 
     let i = 0;
-    function typeWriter() {
+    const out = document.getElementById("output");
+    function type() {
       if (i < text.length) {
-        document.getElementById("text-output").textContent += text.charAt(i);
+        out.textContent += text.charAt(i);
         i++;
-        setTimeout(typeWriter, 10); // typing speed
+        setTimeout(type, 5);
       }
     }
-    typeWriter();
+    type();
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key.toLowerCase() === "h") {
+        window.location.href = "/";
+      } else if (e.key.toLowerCase() === "b") {
+        window.history.back();
+      }
+    });
   </script>
 </body>
 </html>
