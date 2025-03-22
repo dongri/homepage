@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>404 - OVER 9000</title>
+  <style>
+    body {
+      background-color: black;
+      color: #00FF00;
+      font-family: "Courier New", Courier, monospace;
+      white-space: pre;
+      padding: 2em;
+    }
+    #ascii-box {
+      border: 2px solid #00FF00;
+      padding: 1em;
+      max-width: 80ch;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="ascii-box">
+    <div id="text-output"></div>
+  </div>
+
+  <script>
+    const text = `
+╔══════════════════════════════════════════════════════╗
+║  404 ERROR - PAGE NOT FOUND                         ║
+║------------------------------------------------------║
+║  Power level scan in progress...                    ║
+║  [▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓] OVER 9000!!!           ║
+║                                                      ║
+║  "Kakarot! This page... it doesn’t exist!"           ║
+║                                                      ║
+║  The requested page vanished faster than Goku's      ║
+║  Instant Transmission. Not even the Dragon Balls     ║
+║  can bring it back.                                  ║
+║                                                      ║
+║  > Press [H] to return to Capsule Corp (Home)        ║
+║  > Or scream into the void like Vegeta...            ║
+╚══════════════════════════════════════════════════════╝
+`;
+
+    let i = 0;
+    function typeWriter() {
+      if (i < text.length) {
+        document.getElementById("text-output").textContent += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 10); // typing speed
+      }
+    }
+    typeWriter();
+  </script>
+</body>
+</html>
