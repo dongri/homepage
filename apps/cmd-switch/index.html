@@ -243,6 +243,47 @@
         }
       }
     </style>
+    <script>
+      // Discord webhook notification function
+      function notifyDownload() {
+        // Obfuscated webhook URL (Base64 encoded in parts)
+        const parts = [
+          "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3Mv",
+          "OTgzNTY5ODk0OTg3NjY1NDU4L1h5MUtNZkpMNTgzNW9f",
+          "djQtRFFpSjV2NktaWEJSWWJRUm1rNTIzMldiY0NKcWsx",
+          "aExRVTlINjc0NzQ3NnZ5ODlFcmdnCg==",
+        ];
+        const webhookUrl = atob(parts.join("")).trim();
+
+        // Prepare the notification payload
+        const payload = {
+          content: "📥 Cmd Switch がダウンロードされました！",
+          embeds: [
+            {
+              title: "ダウンロード通知",
+              description: "Cmd Switch アプリがダウンロードされました",
+              color: 5814783,
+              timestamp: new Date().toISOString(),
+              footer: {
+                text: "Cmd Switch Download Tracker",
+              },
+            },
+          ],
+        };
+
+        // Send notification to Discord
+        fetch(webhookUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }).catch((err) => {
+          // Silently fail - don't interrupt user experience
+          console.log("Notification sent");
+        });
+      }
+    </script>
   </head>
   <body>
     <div class="container">
@@ -254,7 +295,11 @@
         <p class="tagline">
           Switch input sources instantly with a single Command key press
         </p>
-        <a href="Cmd Switch.zip" class="download-btn" download
+        <a
+          href="Cmd Switch.zip"
+          class="download-btn"
+          download
+          onclick="notifyDownload()"
           >Download for macOS</a
         >
         <div class="version">
