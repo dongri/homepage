@@ -1,6 +1,7 @@
 // Translation data
 const translations = {
   en: {
+    title: "Cmd Switch - Quick Input Source Switching for macOS",
     appName: "Cmd Switch",
     tagline: "Switch input sources instantly with a single Command key press",
     downloadBtn: "Download for macOS",
@@ -51,6 +52,7 @@ const translations = {
     footerIssue: "Report an Issue",
   },
   ja: {
+    title: "Cmd Switch - macOS用クイック入力ソース切り替え",
     appName: "Cmd Switch",
     tagline: "Commandキー1回押すだけで入力ソースを瞬時に切り替え",
     downloadBtn: "macOS用をダウンロード",
@@ -100,6 +102,7 @@ const translations = {
     footerIssue: "問題を報告",
   },
   zh: {
+    title: "Cmd Switch - macOS快速输入源切换",
     appName: "Cmd Switch",
     tagline: "只需按一下Command键即可立即切换输入源",
     downloadBtn: "下载macOS版",
@@ -144,6 +147,7 @@ const translations = {
     footerIssue: "报告问题",
   },
   ko: {
+    title: "Cmd Switch - macOS 빠른 입력 소스 전환",
     appName: "Cmd Switch",
     tagline: "Command 키를 한 번만 누르면 입력 소스를 즉시 전환",
     downloadBtn: "macOS용 다운로드",
@@ -192,6 +196,7 @@ const translations = {
     footerIssue: "문제 보고",
   },
   es: {
+    title: "Cmd Switch - Cambio rápido de fuente de entrada para macOS",
     appName: "Cmd Switch",
     tagline:
       "Cambie las fuentes de entrada al instante con una sola pulsación de la tecla Command",
@@ -244,6 +249,7 @@ const translations = {
     footerIssue: "Reportar un problema",
   },
   fr: {
+    title: "Cmd Switch - Changement rapide de source d'entrée pour macOS",
     appName: "Cmd Switch",
     tagline:
       "Changez de source d'entrée instantanément avec une seule pression de touche Command",
@@ -301,6 +307,7 @@ const translations = {
     footerIssue: "Signaler un problème",
   },
   de: {
+    title: "Cmd Switch - Schneller Eingabequellenwechsel für macOS",
     appName: "Cmd Switch",
     tagline:
       "Wechseln Sie Eingabequellen sofort mit einem einzigen Tastendruck der Command-Taste",
