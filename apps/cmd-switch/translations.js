@@ -365,19 +365,32 @@ const translations = {
 // Change language function
 function changeLanguage(lang) {
   const trans = translations[lang];
-  if (!trans) return;
+  if (!trans) {
+    console.error("Translation not found for language:", lang);
+    return;
+  }
+
+  // Debug: Check if title exists in translation
+  console.log("Selected language:", lang);
+  console.log("Translation has title:", !!trans.title);
+  console.log("Title value:", trans.title);
 
   // Update title with fallback to ensure it's always set
   const newTitle =
     trans.title ||
     translations.en.title ||
     "Cmd Switch - Quick Input Source Switching for macOS";
+
+  console.log("Setting title to:", newTitle);
   document.title = newTitle;
 
   // Also update the title element if it exists
   const titleElement = document.getElementById("pageTitle");
   if (titleElement) {
     titleElement.textContent = newTitle;
+    console.log("Updated title element");
+  } else {
+    console.warn("Title element not found");
   }
 
   document.documentElement.lang = lang;
