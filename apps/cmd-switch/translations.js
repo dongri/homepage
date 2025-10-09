@@ -442,10 +442,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const defaultLang =
     savedLang || (translations[browserLang] ? browserLang : "en");
 
-  // Set the select value
+  // Set the select value and add event listener
   const select = document.getElementById("languageSelect");
   if (select) {
     select.value = defaultLang;
     changeLanguage(defaultLang);
+
+    // Add change event listener
+    select.addEventListener("change", function () {
+      changeLanguage(this.value);
+    });
+  }
+
+  // Add click event listener to download button
+  const downloadBtn = document.getElementById("downloadBtn");
+  if (downloadBtn) {
+    downloadBtn.addEventListener("click", function () {
+      notifyDownload();
+    });
   }
 });

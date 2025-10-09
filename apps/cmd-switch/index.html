@@ -274,7 +274,7 @@
   <body>
     <div class="container">
       <div class="language-selector">
-        <select id="languageSelect" onchange="changeLanguage(this.value)">
+        <select id="languageSelect">
           <option value="en">English</option>
           <option value="ja">日本語</option>
           <option value="zh">中文</option>
@@ -297,7 +297,7 @@
           href="Cmd Switch.zip"
           class="download-btn"
           download
-          onclick="notifyDownload()"
+          id="downloadBtn"
           data-i18n="downloadBtn"
           >Download for macOS</a
         >
