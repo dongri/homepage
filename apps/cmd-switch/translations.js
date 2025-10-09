@@ -367,8 +367,19 @@ function changeLanguage(lang) {
   const trans = translations[lang];
   if (!trans) return;
 
-  // Update title
-  document.title = trans.title || translations.en.title;
+  // Update title with fallback to ensure it's always set
+  const newTitle =
+    trans.title ||
+    translations.en.title ||
+    "Cmd Switch - Quick Input Source Switching for macOS";
+  document.title = newTitle;
+
+  // Also update the title element if it exists
+  const titleElement = document.getElementById("pageTitle");
+  if (titleElement) {
+    titleElement.textContent = newTitle;
+  }
+
   document.documentElement.lang = lang;
 
   // Update all elements with data-i18n attribute
