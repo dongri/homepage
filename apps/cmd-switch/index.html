@@ -25,6 +25,36 @@
         padding: 20px;
       }
 
+      .language-selector {
+        text-align: center;
+        padding: 15px 0;
+        background: #f7fafc;
+        border-radius: 8px;
+        margin-bottom: 20px;
+      }
+
+      .language-selector select {
+        padding: 8px 16px;
+        border: 2px solid #667eea;
+        border-radius: 8px;
+        background: white;
+        color: #333;
+        font-size: 16px;
+        cursor: pointer;
+        outline: none;
+        transition: all 0.3s ease;
+      }
+
+      .language-selector select:hover {
+        border-color: #764ba2;
+        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.2);
+      }
+
+      .language-selector select:focus {
+        border-color: #764ba2;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+
       header {
         text-align: center;
         padding: 60px 20px 40px;
@@ -193,16 +223,6 @@
         margin: 16px 0;
       }
 
-      .screenshot-placeholder {
-        background: linear-gradient(135deg, #4a556822 0%, #2d374822 100%);
-        border-radius: 12px;
-        padding: 80px 20px;
-        text-align: center;
-        color: #4a5568;
-        font-style: italic;
-        margin: 24px 0;
-      }
-
       footer {
         text-align: center;
         padding: 40px 20px;
@@ -248,56 +268,27 @@
         }
       }
     </style>
-    <script>
-      // Discord webhook notification function
-      function notifyDownload() {
-        // Obfuscated webhook URL (Base64 encoded in parts)
-        const parts = [
-          "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3Mv",
-          "OTgzNTY5ODk0OTg3NjY1NDU4L1h5MUtNZkpMNTgzNW9f",
-          "djQtRFFpSjV2NktaWEJSWWJRUm1rNTIzMldiY0NKcWsx",
-          "aExRVTlINjc0NzQ3NnZ5ODlFcmdnCg==",
-        ];
-        const webhookUrl = atob(parts.join("")).trim();
-
-        // Prepare the notification payload
-        const payload = {
-          content: "📥 Cmd Switch がダウンロードされました！",
-          embeds: [
-            {
-              title: "ダウンロード通知",
-              description: "Cmd Switch アプリがダウンロードされました",
-              color: 5814783,
-              timestamp: new Date().toISOString(),
-              footer: {
-                text: "Cmd Switch Download Tracker",
-              },
-            },
-          ],
-        };
-
-        // Send notification to Discord
-        fetch(webhookUrl, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(payload),
-        }).catch((err) => {
-          // Silently fail - don't interrupt user experience
-          console.log("Notification sent");
-        });
-      }
-    </script>
   </head>
   <body>
     <div class="container">
+      <div class="language-selector">
+        <select id="languageSelect" onchange="changeLanguage(this.value)">
+          <option value="en">English</option>
+          <option value="ja">日本語</option>
+          <option value="zh">中文</option>
+          <option value="ko">한국어</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+        </select>
+      </div>
+
       <header>
         <div class="app-icon">
           <img src="appicon-128.png" alt="CmdSwitch Icon" />
         </div>
-        <h1>Cmd Switch</h1>
-        <p class="tagline">
+        <h1 data-i18n="appName">Cmd Switch</h1>
+        <p class="tagline" data-i18n="tagline">
           Switch input sources instantly with a single Command key press
         </p>
         <a
@@ -305,18 +296,19 @@
           class="download-btn"
           download
           onclick="notifyDownload()"
+          data-i18n="downloadBtn"
           >Download for macOS</a
         >
         <div class="version">
-          Version 1.0<br />
-          macOS 12.0+
+          <span data-i18n="version">Version 1.0</span><br />
+          <span data-i18n="macosVersion">macOS 12.0+</span>
         </div>
       </header>
 
       <main>
         <section>
-          <h2>What is Cmd Switch?</h2>
-          <p>
+          <h2 data-i18n="whatIsTitle">What is Cmd Switch?</h2>
+          <p data-i18n="whatIsDesc">
             Cmd Switch is a lightweight macOS menu bar app that lets you switch
             between keyboard input sources (like English and Japanese) by simply
             pressing the left or right Command key alone. No complicated
@@ -325,18 +317,20 @@
 
           <div class="features">
             <div class="feature">
-              <h3>⚡ Lightning Fast</h3>
-              <p>Switch input sources instantly with a single key press</p>
+              <h3 data-i18n="feature1Title">⚡ Lightning Fast</h3>
+              <p data-i18n="feature1Desc">
+                Switch input sources instantly with a single key press
+              </p>
             </div>
             <div class="feature">
-              <h3>⌨️ Customizable</h3>
-              <p>
+              <h3 data-i18n="feature2Title">⌨️ Customizable</h3>
+              <p data-i18n="feature2Desc">
                 Assign different input sources to left and right Command keys
               </p>
             </div>
             <div class="feature">
-              <h3>🎯 Simple</h3>
-              <p>
+              <h3 data-i18n="feature3Title">🎯 Simple</h3>
+              <p data-i18n="feature3Desc">
                 Works seamlessly without interfering with normal keyboard
                 shortcuts
               </p>
@@ -345,44 +339,50 @@
         </section>
 
         <section>
-          <h2>Installation</h2>
+          <h2 data-i18n="installationTitle">Installation</h2>
 
           <ol class="steps">
-            <li>
+            <li data-i18n-html="step1">
               Download <strong>Cmd Switch.zip</strong> from the button above
             </li>
-            <li>
+            <li data-i18n-html="step2">
               Unzip the file and move <strong>Cmd Switch.app</strong> to your
               Applications folder
             </li>
-            <li>Open Cmd Switch from your Applications folder</li>
-            <li>
+            <li data-i18n-html="step3">
+              Open Cmd Switch from your Applications folder
+            </li>
+            <li data-i18n-html="step4">
               Grant <strong>Accessibility permissions</strong> when prompted
               (System Settings → Privacy & Security → Accessibility)
             </li>
           </ol>
 
           <div class="requirement">
-            <strong>⚠️ Important:</strong> Cmd Switch requires Accessibility
-            permissions to monitor keyboard events. This is necessary for
-            detecting Command key presses.
+            <span data-i18n-html="requirementText"
+              ><strong>⚠️ Important:</strong> Cmd Switch requires Accessibility
+              permissions to monitor keyboard events. This is necessary for
+              detecting Command key presses.</span
+            >
           </div>
         </section>
 
         <section>
-          <h2>How to Use</h2>
+          <h2 data-i18n="howToUseTitle">How to Use</h2>
 
           <ol class="steps">
-            <li>Click the <strong>⌘</strong> icon in your menu bar</li>
-            <li>
+            <li data-i18n-html="useStep1">
+              Click the <strong>⌘</strong> icon in your menu bar
+            </li>
+            <li data-i18n-html="useStep2">
               Select input sources for <strong>Left Command</strong> and
               <strong>Right Command</strong>
             </li>
-            <li>
+            <li data-i18n-html="useStep3">
               Press the <strong>left Command key alone</strong> to switch to
               your left Command input source
             </li>
-            <li>
+            <li data-i18n-html="useStep4">
               Press the <strong>right Command key alone</strong> to switch to
               your right Command input source
             </li>
@@ -401,7 +401,7 @@
             "
           />
 
-          <p>
+          <p data-i18n-html="noteText">
             <strong>Note:</strong> Normal Command key shortcuts (like Cmd+C,
             Cmd+V) continue to work as usual. Cmd Switch only activates when you
             press a Command key by itself.
@@ -409,39 +409,56 @@
         </section>
 
         <section>
-          <h2>Perfect For</h2>
+          <h2 data-i18n="perfectForTitle">Perfect For</h2>
           <ul style="line-height: 2">
-            <li>✅ Bilingual users switching between languages</li>
-            <li>✅ Developers who use multiple keyboard layouts</li>
-            <li>✅ Anyone tired of complex keyboard shortcuts</li>
-            <li>✅ Power users looking for efficiency</li>
+            <li data-i18n="perfectFor1">
+              ✅ Bilingual users switching between languages
+            </li>
+            <li data-i18n="perfectFor2">
+              ✅ Developers who use multiple keyboard layouts
+            </li>
+            <li data-i18n="perfectFor3">
+              ✅ Anyone tired of complex keyboard shortcuts
+            </li>
+            <li data-i18n="perfectFor4">
+              ✅ Power users looking for efficiency
+            </li>
           </ul>
         </section>
 
         <section>
-          <h2>Open Source</h2>
-          <p>
+          <h2 data-i18n="openSourceTitle">Open Source</h2>
+          <p data-i18n="openSourceDesc">
             Cmd Switch is free and open source software. View the source code,
             report issues, or contribute on GitHub:
           </p>
           <div class="code-block">
             git clone https://github.com/dongri/cmd-switch.git
           </div>
-          <p style="margin-top: 16px">
+          <p style="margin-top: 16px" data-i18n="openSourceLicense">
             Licensed under [MIT License]. Contributions are welcome!
           </p>
         </section>
       </main>
 
       <footer>
-        <p>Made with ❤️ for macOS</p>
+        <p data-i18n="footerMade">Made with ❤️ for macOS</p>
         <p style="margin-top: 8px">
-          <a href="https://github.com/dongri/cmd-switch">GitHub</a> •
-          <a href="https://github.com/dongri/cmd-switch/issues"
+          <a
+            href="https://github.com/dongri/cmd-switch"
+            data-i18n="footerGithub"
+            >GitHub</a
+          >
+          •
+          <a
+            href="https://github.com/dongri/cmd-switch/issues"
+            data-i18n="footerIssue"
             >Report an Issue</a
           >
         </p>
       </footer>
     </div>
+
+    <script src="translations.js"></script>
   </body>
 </html>
