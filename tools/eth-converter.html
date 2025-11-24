@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ETH Converter</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <h1>ETH Converter</h1>
+    <div>
+      <label for="wei">Wei</label>
+      <input type="text" id="wei" placeholder="Wei" oninput="convertFromWei()" />
+    </div>
+    <div>
+      <label for="gwei">Gwei</label>
+      <input type="text" id="gwei" placeholder="Gwei" oninput="convertFromGwei()" />
+    </div>
+    <div>
+      <label for="eth">Ether</label>
+      <input type="text" id="eth" placeholder="Ether" oninput="convertFromEth()" />
+    </div>
+
+    <script>
+      function convertFromWei() {
+        const weiInput = document.getElementById('wei');
+        const gweiInput = document.getElementById('gwei');
+        const ethInput = document.getElementById('eth');
+        
+        const wei = weiInput.value.trim();
+        if (wei === '' || isNaN(wei)) {
+          gweiInput.value = '';
+          ethInput.value = '';
+          return;
+        }
+        
+        const weiNum = parseFloat(wei);
+        gweiInput.value = (weiNum / 1e9).toString();
+        ethInput.value = (weiNum / 1e18).toString();
+      }
+
+      function convertFromGwei() {
+        const weiInput = document.getElementById('wei');
+        const gweiInput = document.getElementById('gwei');
+        const ethInput = document.getElementById('eth');
+        
+        const gwei = gweiInput.value.trim();
+        if (gwei === '' || isNaN(gwei)) {
+          weiInput.value = '';
+          ethInput.value = '';
+          return;
+        }
+        
+        const gweiNum = parseFloat(gwei);
+        weiInput.value = (gweiNum * 1e9).toString();
+        ethInput.value = (gweiNum / 1e9).toString();
+      }
+
+      function convertFromEth() {
+        const weiInput = document.getElementById('wei');
+        const gweiInput = document.getElementById('gwei');
+        const ethInput = document.getElementById('eth');
+        
+        const eth = ethInput.value.trim();
+        if (eth === '' || isNaN(eth)) {
+          weiInput.value = '';
+          gweiInput.value = '';
+          return;
+        }
+        
+        const ethNum = parseFloat(eth);
+        weiInput.value = (ethNum * 1e18).toString();
+        gweiInput.value = (ethNum * 1e9).toString();
+      }
+    </script>
+  </body>
+</html>
