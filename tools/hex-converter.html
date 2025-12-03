@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hex Converter</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <h1>10進数 ↔ 16進数 変換</h1>
+    
+    <div>
+      <label for="decimal">10進数 (Decimal)</label>
+      <input type="text" id="decimal" placeholder="例: 255" oninput="convertFromDecimal()" />
+    </div>
+    
+    <div>
+      <label for="hex">16進数 (Hexadecimal)</label>
+      <input type="text" id="hex" placeholder="例: FF or 0xFF" oninput="convertFromHex()" />
+    </div>
+
+    <script>
+      function convertFromDecimal() {
+        const decimalInput = document.getElementById('decimal');
+        const hexInput = document.getElementById('hex');
+        
+        const decimal = decimalInput.value.trim();
+        
+        // 空の場合はクリア
+        if (decimal === '') {
+          hexInput.value = '';
+          return;
+        }
+        
+        // 数値チェック（整数のみ）
+        if (!/^-?\d+$/.test(decimal)) {
+          hexInput.value = '無効な10進数';
+          return;
+        }
+        
+        try {
+          const decNum = BigInt(decimal);
+          
+          // 負の数の場合は符号付きで表示
+          if (decNum < 0n) {
+            hexInput.value = '-' + (-decNum).toString(16).toUpperCase();
+          } else {
+            hexInput.value = decNum.toString(16).toUpperCase();
+          }
+        } catch (e) {
+          hexInput.value = 'エラー: 数値が大きすぎます';
+        }
+      }
+
+      function convertFromHex() {
+        const decimalInput = document.getElementById('decimal');
+        const hexInput = document.getElementById('hex');
+        
+        let hex = hexInput.value.trim();
+        
+        // 空の場合はクリア
+        if (hex === '') {
+          decimalInput.value = '';
+          return;
+        }
+        
+        // 0x または 0X プレフィックスを除去
+        if (hex.toLowerCase().startsWith('0x')) {
+          hex = hex.substring(2);
+        }
+        
+        // 負の数のチェック
+        let isNegative = false;
+        if (hex.startsWith('-')) {
+          isNegative = true;
+          hex = hex.substring(1);
+        }
+        
+        // 16進数として有効かチェック
+        if (!/^[0-9a-fA-F]+$/.test(hex)) {
+          decimalInput.value = '無効な16進数';
+          return;
+        }
+        
+        try {
+          let decNum = BigInt('0x' + hex);
+          if (isNegative) {
+            decNum = -decNum;
+          }
+          decimalInput.value = decNum.toString();
+        } catch (e) {
+          decimalInput.value = 'エラー: 数値が大きすぎます';
+        }
+      }
+    </script>
+    
+    <style>
+      /* 追加のスタイル */
+      div {
+        margin: 20px 0;
+      }
+      
+      label {
+        display: inline-block;
+        width: 200px;
+        font-weight: bold;
+      }
+      
+      input[type="text"] {
+        width: 300px;
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      
+      input[type="text"]:focus {
+        outline: none;
+        border-color: #4CAF50;
+      }
+      
+      h1 {
+        color: #333;
+        margin-bottom: 30px;
+      }
+    </style>
+  </body>
+</html>
