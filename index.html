@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,15 @@
   <meta name="keywords" content="Dongri Jin,Dongri">
   <title>Dongri's Homepage</title>
 </head>
+
 <body style="margin: 0; height: 100vh; display: flex;">
-  <iframe src="menu.html" name="left" style="width: 20%; height: 100vh; border: 1px solid #eee"></iframe>
-  <iframe src="top.html" name="right" style="width: 80%; height: 100vh; border: 1px solid #eee"></iframe>
+  <iframe id="left" name="left" style="width: 20%; height: 100vh; border: 1px solid #eee"></iframe>
+  <iframe id="right" name="right" style="width: 80%; height: 100vh; border: 1px solid #eee"></iframe>
+  <script>
+    var ts = new Date().getTime();
+    document.getElementById("left").src = "menu.html?t=" + ts;
+    document.getElementById("right").src = "top.html?t=" + ts;
+  </script>
 </body>
+
 </html>
