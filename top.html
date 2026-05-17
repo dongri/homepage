@@ -5,27 +5,72 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dongri's Homepage</title>
+  <link rel="stylesheet" href="90s.css">
 </head>
 
-<body style="margin: 0; padding: 40px 0">
-  <h1 style="text-align: center">どんぐりのホームページ</h1>
-  <br /><br />
-  <marquee behavior="scroll" direction="left">
-    <div style="display: inline-flex; align-items: center">
-      <img src="img/dongri.png" height="50px" />&nbsp;&nbsp;Wellcome&nbsp;&nbsp;<img src="img/dongri.png"
-        height="50px" />
-    </div>
+<body>
+  <h1 class="rainbow">☆彡 どんぐりのホームページ 彡☆</h1>
+  <p class="blink fire">★ WELCOME TO MY HOMEPAGE!! ★</p>
+
+  <marquee behavior="scroll" direction="left" scrollamount="6">
+    <span style="font-size: 24px;">
+      <img src="img/dongri.png" height="50px" />
+      &nbsp;&nbsp;<span class="glow">Wellcome to Dongri's super cool corner of the World Wide Web!!!</span>&nbsp;&nbsp;
+      <img src="img/dongri.png" height="50px" />
+    </span>
   </marquee>
-  <br /><br />
-  <div style="text-align: center">
+
+  <br>
+
+  <div class="signpost">
     <p>
-      My name is Dongri. I am a software engineer. I am interested in
-      blockchain and crypto.
+      My name is <b class="rainbow">Dongri</b>. I am a software engineer.<br>
+      I am interested in <span class="blink" style="color: #00ff00;">blockchain</span>
+      and <span class="fire">crypto</span>.
     </p>
     <p>今は東京で住んでます、🍜が好きです、特に博多ラーメンが好き。</p>
     <p>出生在中国的东北，20岁时来到了日本。现在在东京工作。</p>
     <p>한국어는 사투리를 썩어서 좀 할수있습니다</p>
   </div>
+
+  <br><br>
+
+  <div>
+    <span class="construction">🚧 SITE UNDER CONSTRUCTION 🚧</span>
+  </div>
+
+  <br>
+
+  <div>
+    <small>You are visitor number:</small><br>
+    <span class="counter" id="counter">00042</span>
+  </div>
+
+  <br>
+
+  <div>
+    <small class="glow">Best viewed in Netscape Navigator 4.0 at 800×600</small><br>
+    <small>Last updated: <span class="blink">2026/05/17</span></small>
+  </div>
+
+  <br>
+
+  <div class="webring">
+    <small class="rainbow">~ The Dongri Web Ring ~</small><br>
+    <small>[ &lt; prev | random | next &gt; ]</small>
+  </div>
+
+  <br><br>
+
+  <marquee behavior="alternate" scrollamount="4">
+    <span class="fire" style="font-size: 18px;">🔥 Sign my guestbook!! 🔥</span>
+  </marquee>
+
+  <script>
+    var n = parseInt(localStorage.getItem('visits') || '41', 10) + 1;
+    localStorage.setItem('visits', n);
+    document.getElementById('counter').textContent = String(n).padStart(5, '0');
+  </script>
 </body>
 
 </html>
