@@ -1,0 +1,120 @@
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@keyframes rainbow {
+  0% { color: #ff0000; }
+  16% { color: #ff8800; }
+  33% { color: #ffff00; }
+  50% { color: #00ff00; }
+  66% { color: #00ffff; }
+  83% { color: #ff00ff; }
+  100% { color: #ff0000; }
+}
+
+.blink { animation: blink 1s step-end infinite; }
+.rainbow { animation: rainbow 2s linear infinite; font-weight: bold; }
+
+body {
+  background-color: #000080;
+  background-image:
+    radial-gradient(white 1px, transparent 1.5px),
+    radial-gradient(white 1px, transparent 1.5px);
+  background-size: 50px 50px;
+  background-position: 0 0, 25px 25px;
+  color: #ffff00;
+  font-family: "Comic Sans MS", "Comic Sans", "Chalkboard", cursive;
+  text-align: center;
+}
+
+a:link { color: #00ffff; }
+a:visited { color: #ff66ff; }
+a:hover { color: #ff0000; background: #ffff00; }
+a:active { color: #ff0000; }
+
+h1, h2, h3 {
+  color: #ff00ff;
+  text-shadow: 2px 2px 0 #00ffff, 4px 4px 0 #000;
+  text-align: center;
+}
+
+hr {
+  border: none;
+  height: 4px;
+  background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, magenta);
+}
+
+table {
+  margin: 0 auto;
+  border: 3px outset #c0c0c0;
+  background: #000080;
+}
+
+td, th {
+  border: 2px inset #c0c0c0;
+  padding: 6px 10px;
+  color: #ffff00;
+}
+
+.box {
+  display: inline-block;
+  margin: 10px auto;
+  padding: 12px 18px;
+  background: #000080;
+  border: 3px ridge #c0c0c0;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.construction {
+  background: repeating-linear-gradient(
+    45deg,
+    #ffcc00,
+    #ffcc00 10px,
+    #000 10px,
+    #000 20px
+  );
+  color: #000;
+  font-weight: bold;
+  padding: 6px 12px;
+  display: inline-block;
+  margin: 8px 0;
+  -webkit-text-stroke: 1px #fff;
+}
+
+.counter {
+  display: inline-block;
+  background: #000;
+  color: #00ff00;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+  padding: 4px 10px;
+  border: 2px inset #888;
+  letter-spacing: 4px;
+}
+
+.fire {
+  color: #ff6600;
+  text-shadow: 0 0 4px #ff0, 0 0 8px #f80, 0 0 12px #f00;
+  font-weight: bold;
+}
+
+.glow {
+  color: #fff;
+  text-shadow: 0 0 4px #0ff, 0 0 8px #0ff, 0 0 12px #00f;
+}
+
+.signpost {
+  border: 4px double #ffff00;
+  padding: 10px;
+  margin: 12px auto;
+  display: inline-block;
+  background: rgba(0, 0, 80, 0.7);
+}
+
+.webring {
+  border: 2px ridge #ff00ff;
+  padding: 8px;
+  margin: 12px auto;
+  display: inline-block;
+  background: #000;
+}
