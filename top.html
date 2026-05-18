@@ -43,7 +43,7 @@
 
   <div>
     <small>You are visitor number:</small><br>
-    <span class="counter" id="counter">00042</span>
+    <span class="counter" id="counter">3098761</span>
   </div>
 
   <br>
@@ -67,7 +67,7 @@
   </marquee>
 
   <script>
-    var n = parseInt(localStorage.getItem('visits') || '41', 10) + 1;
+    var n = parseInt(localStorage.getItem('visits') || '3098761', 10) + 1;
     localStorage.setItem('visits', n);
     document.getElementById('counter').textContent = String(n).padStart(5, '0');
   </script>
