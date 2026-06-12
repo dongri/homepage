@@ -1,22 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Dongri Jin">
-  <meta name="keywords" content="Dongri Jin,Dongri">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Dongri Jin — software engineer in Tokyo, interested in blockchain and crypto." />
   <title>Dongri's Homepage</title>
+  <link rel="stylesheet" href="future.css">
 </head>
 
-<body style="margin: 0; height: 100vh; display: flex; background: #000080;">
-  <iframe id="left" name="left" style="width: 22%; border: 3px ridge #ff00ff"></iframe>
-  <iframe id="right" name="right" style="width: 78%; border: 3px ridge #00ffff"></iframe>
-  <script>
-    var ts = new Date().getTime();
-    document.getElementById("left").src = "menu.html?t=" + ts;
-    document.getElementById("right").src = "top.html?t=" + ts;
-  </script>
+<body>
+  <nav class="nav">
+    <a href="index.html" class="active">Top</a>
+    <a href="links.html">Links</a>
+    <a href="kungfu.html">Kungfu</a>
+    <a href="projects.html">Projects</a>
+    <a href="tools/index.html">Tools</a>
+  </nav>
+
+  <h1 class="rainbow">どんぐりのホームページ</h1>
+
+  <div style="display: flex; justify-content: center; margin: 18px 0;">
+    <div class="avatar-holo">
+      <img src="img/dongri.png" alt="Dongri" />
+    </div>
+  </div>
+
+  <div class="signpost">
+    <p>
+      My name is <b class="rainbow">Dongri</b>. I am a software engineer.<br>
+      I am interested in <span class="glow">blockchain</span>
+      and <span class="fire">crypto</span>.
+    </p>
+    <p>今は東京で住んでます、🍜が好きです、特に博多ラーメンが好き。</p>
+    <p>出生在中国的东北，20岁时来到了日本。现在在东京工作。</p>
+    <p>한국어는 사투리를 썩어서 좀 할수있습니다</p>
+  </div>
+
+  <div style="margin-top: 26px;">
+    <a class="cta" href="https://shop.dongri.org" target="_blank">My Digital Products</a>
+  </div>
 </body>
 
 </html>

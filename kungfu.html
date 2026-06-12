@@ -4,90 +4,100 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dongri's Homepage</title>
-  <link rel="stylesheet" href="90s.css">
+  <meta name="description" content="Dongri Jin's tech skill tree — blockchain, backend, frontend, infra, and more.">
+  <title>Kungfu | Dongri's Homepage</title>
+  <link rel="stylesheet" href="future.css">
   <style>
-    table { width: 320px; }
-    td { width: 120px; }
+    /* table sits inside a signpost panel — drop its own panel chrome */
+    table {
+      width: 100%;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
   </style>
 </head>
 
 <body>
-  <h1 class="rainbow">☯ 功夫 ☯</h1>
-  <marquee behavior="alternate" scrollamount="5">
-    <span class="fire">★ My Tech Skill Tree ★</span>
-  </marquee>
+  <nav class="nav">
+    <a href="index.html">Top</a>
+    <a href="links.html">Links</a>
+    <a href="kungfu.html" class="active">Kungfu</a>
+    <a href="projects.html">Projects</a>
+    <a href="tools/index.html">Tools</a>
+  </nav>
 
-  <br>
+  <h1 class="rainbow">功夫</h1>
 
-  <h3 class="glow">♦ Blockchain ♦</h3>
-  <table>
-    <tr><td>Solidity</td><td>2017</td></tr>
-    <tr><td>Web3.js</td><td>2017</td></tr>
-    <tr><td>Solana</td><td>2022</td></tr>
-    <tr><td>Move</td><td>2022</td></tr>
-    <tr><td>Ethereum</td><td>2015</td></tr>
-    <tr><td>Bitcoin</td><td>2015</td></tr>
-  </table>
+  <h2 class="fire">Blockchain</h2>
+  <div class="signpost">
+    <table>
+      <tr><td>Solidity</td><td>2017</td></tr>
+      <tr><td>Web3.js</td><td>2017</td></tr>
+      <tr><td>Solana</td><td>2022</td></tr>
+      <tr><td>Move</td><td>2022</td></tr>
+      <tr><td>Ethereum</td><td>2015</td></tr>
+      <tr><td>Bitcoin</td><td>2015</td></tr>
+    </table>
+  </div>
 
-  <br>
+  <h2 class="fire">Infra</h2>
+  <div class="signpost">
+    <table>
+      <tr><td>GCP</td><td>2015</td></tr>
+      <tr><td>AWS</td><td>2013</td></tr>
+    </table>
+  </div>
 
-  <h3 class="glow">♦ Infra ♦</h3>
-  <table>
-    <tr><td>GCP</td><td>2015</td></tr>
-    <tr><td>AWS</td><td>2013</td></tr>
-  </table>
+  <h2 class="fire">DB</h2>
+  <div class="signpost">
+    <table>
+      <tr><td>PostgreSQL</td><td>2005</td></tr>
+      <tr><td>MySQL</td><td>2005</td></tr>
+      <tr><td>SQLite</td><td>2004</td></tr>
+      <tr><td>Oracle</td><td>2004</td></tr>
+      <tr><td>SQL Server</td><td>2004</td></tr>
+      <tr><td>Redis</td><td>2012</td></tr>
+      <tr><td>MongoDB</td><td>2012</td></tr>
+      <tr><td>Memcached</td><td>2012</td></tr>
+    </table>
+  </div>
 
-  <br>
+  <h2 class="fire">Backend</h2>
+  <div class="signpost">
+    <table>
+      <tr><td>Rust</td><td>2015</td></tr>
+      <tr><td>Go</td><td>2014</td></tr>
+      <tr><td>Node.js</td><td>2011</td></tr>
+      <tr><td>Ruby, Rails</td><td>2005</td></tr>
+      <tr><td>Python</td><td>2004</td></tr>
+      <tr><td>Java</td><td>2004</td></tr>
+      <tr><td>PHP</td><td>2002</td></tr>
+      <tr><td>Perl</td><td>2002</td></tr>
+    </table>
+  </div>
 
-  <h3 class="glow">♦ DB ♦</h3>
-  <table>
-    <tr><td>PostgreSQL</td><td>2005</td></tr>
-    <tr><td>MySQL</td><td>2005</td></tr>
-    <tr><td>SQLite</td><td>2004</td></tr>
-    <tr><td>Oracle</td><td>2004</td></tr>
-    <tr><td>SQL Server</td><td>2004</td></tr>
-    <tr><td>Redis</td><td>2012</td></tr>
-    <tr><td>MongoDB</td><td>2012</td></tr>
-    <tr><td>Memcached</td><td>2012</td></tr>
-  </table>
+  <h2 class="fire">Frontend</h2>
+  <div class="signpost">
+    <table>
+      <tr><td>React</td><td>2015</td></tr>
+      <tr><td>Vue</td><td>2015</td></tr>
+      <tr><td>Angular</td><td>2013</td></tr>
+      <tr><td>jQuery</td><td>2005</td></tr>
+      <tr><td>HTML, CSS</td><td>2002</td></tr>
+    </table>
+  </div>
 
-  <br>
-
-  <h3 class="glow">♦ Backend ♦</h3>
-  <table>
-    <tr><td>Rust</td><td>2015</td></tr>
-    <tr><td>Go</td><td>2014</td></tr>
-    <tr><td>Node.js</td><td>2011</td></tr>
-    <tr><td>Ruby, Rails</td><td>2005</td></tr>
-    <tr><td>Python</td><td>2004</td></tr>
-    <tr><td>Java</td><td>2004</td></tr>
-    <tr><td>PHP</td><td>2002</td></tr>
-    <tr><td>Perl</td><td>2002</td></tr>
-  </table>
-
-  <br>
-
-  <h3 class="glow">♦ Frontend ♦</h3>
-  <table>
-    <tr><td>React</td><td>2015</td></tr>
-    <tr><td>Vue</td><td>2015</td></tr>
-    <tr><td>Angular</td><td>2013</td></tr>
-    <tr><td>jQuery</td><td>2005</td></tr>
-    <tr><td>HTML, CSS</td><td>2002</td></tr>
-  </table>
-
-  <br>
-
-  <h3 class="glow">♦ Mobile ♦</h3>
-  <table>
-    <tr><td>Swift</td><td>2014</td></tr>
-    <tr><td>Android</td><td>2010</td></tr>
-    <tr><td>Objective-C</td><td>2007</td></tr>
-  </table>
-
-  <br><br>
-  <div class="construction">🚧 Always leveling up!! 🚧</div>
+  <h2 class="fire">Mobile</h2>
+  <div class="signpost">
+    <table>
+      <tr><td>Swift</td><td>2014</td></tr>
+      <tr><td>Android</td><td>2010</td></tr>
+      <tr><td>Objective-C</td><td>2007</td></tr>
+    </table>
+  </div>
 </body>
 
 </html>

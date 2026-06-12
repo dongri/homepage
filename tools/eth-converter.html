@@ -7,7 +7,15 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
+    <nav class="nav">
+      <a href="../index.html">Top</a>
+      <a href="../links.html">Links</a>
+      <a href="../kungfu.html">Kungfu</a>
+      <a href="../projects.html">Projects</a>
+      <a href="index.html" class="active">Tools</a>
+    </nav>
     <h1>ETH Converter</h1>
+    <div class="panel">
     <div>
       <label for="wei">Wei</label>
       <input type="text" id="wei" placeholder="Wei" oninput="convertFromWei()" />
@@ -73,5 +81,6 @@
         gweiInput.value = (ethNum * 1e9).toString();
       }
     </script>
+    </div>
   </body>
 </html>
