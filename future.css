@@ -162,6 +162,7 @@ small { color: rgba(232, 246, 255, 0.65); }
   margin: 14px auto;
   padding: 22px 28px;
   width: min(640px, 92vw);
+  overflow-wrap: anywhere;
   background: var(--panel);
   border: 1px solid var(--edge);
   border-radius: 14px;
