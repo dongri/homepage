@@ -105,20 +105,6 @@
 
   <p id="email">dongrium [at] gmail [dot] com</p>
 
-  <script>
-    // assembled at runtime so the address is not in the page source for scrapers
-    (function () {
-      var user = ['dongri', 'um'].join('');
-      var domain = ['gmail', 'com'].join('.');
-      var address = user + String.fromCharCode(64) + domain;
-      var link = document.createElement('a');
-      link.href = 'mai' + 'lto:' + address;
-      link.textContent = address;
-      var p = document.getElementById('email');
-      p.textContent = '';
-      p.appendChild(link);
-    })();
-  </script>
 </body>
 
 </html>
