@@ -8,43 +8,140 @@
   <title>Dongri Jin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400&text=%E5%8D%8E%E4%BD%97&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500&text=%E5%8D%8E%E4%BD%97&display=swap"
     rel="stylesheet">
   <meta name="color-scheme" content="light dark">
   <style>
     :root {
       color-scheme: light dark;
       --bg: #fff;
-      --fg: #000;
+      --fg: #111;
       --muted: #666;
+      --faint: #9a9a9a;
+      --line: #ececec;
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #111;
-        --fg: #e6e6e6;
-        --muted: #999;
+        --bg: #0f0f10;
+        --fg: #ededed;
+        --muted: #a1a1a1;
+        --faint: #6b6b6b;
+        --line: #232325;
       }
     }
 
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      max-width: 40em;
-      margin: 2em auto;
-      padding: 0 1em;
+      max-width: 38rem;
+      margin: 0 auto;
+      padding: 5rem 1.25rem 4rem;
       background: var(--bg);
       color: var(--fg);
-      font-family: 'JetBrains Mono', 'Noto Sans SC', monospace;
-      line-height: 1.6;
+      font-family: 'Inter', 'Noto Sans SC', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: var(--faint);
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      text-decoration-color: currentColor;
+    }
+
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin: 0 0 1rem;
+    }
+
+    .intro {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .intro a {
       color: var(--fg);
     }
 
+    h2 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--faint);
+      margin: 3.5rem 0 0.5rem;
+    }
+
+    .projects {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .projects li {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .projects li:last-child {
+      border-bottom: 0;
+    }
+
+    .project-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .project-name {
+      font-weight: 600;
+    }
+
     .project-url {
-      font-size: 0.8em;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
       color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .project-url::after {
+      content: ' ↗';
+    }
+
+    .project-url:hover {
+      color: var(--fg);
+    }
+
+    .project-desc {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0.2rem 0 0;
+    }
+
+    #email {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 0.75rem 0 0;
     }
   </style>
 </head>
@@ -52,42 +149,49 @@
 <body>
   <h1>Dongri Jin</h1>
 
-  <p>
+  <p class="intro">
     I am a software engineer based in Tokyo. I was born in northeast China and moved to Japan.
     I work mostly on backend systems, blockchain, and crypto, and most of my code is on GitHub as
-    <a href="https://github.com/dongri" target="_blank" rel="noopener">@dongri</a>.
+    <a class="mono" href="https://github.com/dongri" target="_blank" rel="noopener">@dongri</a>.
   </p>
 
   <h2>Projects</h2>
 
-  <p>
-    <span lang="zh-Hans">华佗</span> -
-    <a class="project-url" href="https://huatuo.xyz" target="_blank" rel="noopener">huatuo.xyz</a><br>
-    A lab of small tools shipped as experiments.
-  </p>
-
-  <p>
-    RUNC -
-    <a class="project-url" href="https://runc.xyz" target="_blank" rel="noopener">runc.xyz</a><br>
-    Decentralized collective building NFTs and tokens that live fully on-chain.
-  </p>
-
-  <p>
-    Pashari -
-    <a class="project-url" href="https://pashari.xyz" target="_blank" rel="noopener">pashari.xyz</a><br>
-    Photo-sharing app where every post is minted as an NFT and listed on OpenSea, with passkey
-    login and a non-custodial wallet.
-  </p>
-
-  <p>
-    LGTM -
-    <a class="project-url" href="https://lgtm.lol" target="_blank" rel="noopener">lgtm.lol</a><br>
-    LGTM image service for pull requests.
-  </p>
+  <ul class="projects">
+    <li>
+      <div class="project-head">
+        <span class="project-name" lang="zh-Hans">华佗</span>
+        <a class="project-url" href="https://huatuo.xyz" target="_blank" rel="noopener">huatuo.xyz</a>
+      </div>
+      <p class="project-desc">A lab of small tools shipped as experiments.</p>
+    </li>
+    <li>
+      <div class="project-head">
+        <span class="project-name">RUNC</span>
+        <a class="project-url" href="https://runc.xyz" target="_blank" rel="noopener">runc.xyz</a>
+      </div>
+      <p class="project-desc">Decentralized collective building NFTs and tokens that live fully on-chain.</p>
+    </li>
+    <li>
+      <div class="project-head">
+        <span class="project-name">Pashari</span>
+        <a class="project-url" href="https://pashari.xyz" target="_blank" rel="noopener">pashari.xyz</a>
+      </div>
+      <p class="project-desc">Photo-sharing app where every post is minted as an NFT and listed on OpenSea, with
+        passkey login and a non-custodial wallet.</p>
+    </li>
+    <li>
+      <div class="project-head">
+        <span class="project-name">LGTM</span>
+        <a class="project-url" href="https://lgtm.lol" target="_blank" rel="noopener">lgtm.lol</a>
+      </div>
+      <p class="project-desc">LGTM image service for pull requests.</p>
+    </li>
+  </ul>
 
   <h2>Contact</h2>
 
-  <p id="email">dongrium [at] gmail [dot] com</p>
+  <p class="mono" id="email">dongrium [at] gmail [dot] com</p>
 
 </body>
 
