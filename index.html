@@ -202,3 +202,43 @@
 </body>
 
 </html>
+<!--
+[2K
+  [1mHi, curl user![0m [2mHere is how I set up a new Mac.[0m
+  [2m────────────────────────────────────────────────────────────[0m
+  Run the lines starting with [32m$[0m in your terminal, top to bottom
+  [2m(copy the part after "$ ").[0m
+
+  [1m[36mRust[0m  [2m[4mhttps://www.rust-lang.org/tools/install[0m
+    [2m# 1. Install Rust with rustup[0m
+    [32m$[0m curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    [2m# 2. Load it into the current shell[0m
+    [32m$[0m source $HOME/.cargo/env
+    [2m# 3. Check the installed version[0m
+    [32m$[0m rustc --version
+
+  [1m[36mGo[0m  [2m[4mhttps://go.dev/dl/[0m
+    [2m# 1. Look up the latest version (prints something like go1.xx.x)[0m
+    [32m$[0m GO=$(curl -fsSL 'https://go.dev/VERSION?m=text' | head -n1); echo $GO
+    [2m# 2. Download it (Apple Silicon)[0m
+    [32m$[0m curl -LO https://go.dev/dl/$GO.darwin-arm64.tar.gz
+    [2m# 3. Install to /usr/local/go[0m
+    [2m#    (upgrading? remove the old one first: sudo rm -rf /usr/local/go)[0m
+    [32m$[0m sudo tar -C /usr/local -xzf $GO.darwin-arm64.tar.gz
+    [2m# 4. Add Go to your PATH[0m
+    [32m$[0m echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.zshrc
+    [32m$[0m source ~/.zshrc
+    [2m# 5. Check the installed version[0m
+    [32m$[0m go version
+
+  [1m[36mNode.js[0m  [2m[4mhttps://github.com/nvm-sh/nvm[0m
+    [2m# 1. Look up the latest nvm version (prints something like v0.xx.x)[0m
+    [32m$[0m NVM=$(curl -fsSL https://api.github.com/repos/nvm-sh/nvm/releases/latest | grep '"tag_name"' | cut -d'"' -f4); echo $NVM
+    [2m# 2. Install nvm and load it[0m
+    [32m$[0m curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/$NVM/install.sh | bash
+    [32m$[0m source ~/.zshrc
+    [2m# 3. Install the latest LTS version of Node.js[0m
+    [32m$[0m nvm install --lts
+    [2m# 4. Check the installed version[0m
+    [32m$[0m node --version
+[0m
